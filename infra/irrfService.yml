@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: irrf-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: irrf-service
+  template:
+    metadata:
+      labels:
+        app: irrf-service
+    spec:
+      containers:
+        - name: irrf-service
+          image: danielugulino/irrfservice:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: irrf-service
+spec:
+  type: ClusterIP
+  selector:
+    app: irrf-service
+  ports:
+    - port: 8082
+      targetPort: 8082

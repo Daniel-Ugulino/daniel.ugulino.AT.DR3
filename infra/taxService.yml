@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tax-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tax-service
+  template:
+    metadata:
+      labels:
+        app: tax-service
+    spec:
+      containers:
+        - name: tax-service
+          image: danielugulino/taxservice:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8084
+          env:
+            - name: DBService
+              value: database-service
+
+            - name: irrfService
+              value: irrf-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tax-service
+spec:
+  type: ClusterIP
+  selector:
+    app: tax-service
+  ports:
+    - port: 8084
+      targetPort: 8084
