@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "com.infnet.taxService.client")
+@EnableFeignClients(basePackages = "com.infnet.taxService.Client")
 public class taxServiceApplication {
 
 	public static void main(String[] args) {
