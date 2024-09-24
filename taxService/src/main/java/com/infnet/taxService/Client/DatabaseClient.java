@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "database", url = "localhost:8083/db/")
+@FeignClient(name = "database-service", url = "http://database-service:8083/db/")
 public interface DatabaseClient {
     @PostMapping
     IRRFDto save(@RequestBody TaxDto taxDto);

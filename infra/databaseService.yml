@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: database-service
-          image: danielugulino/chatservice:latest
+          image: danielugulino/databaseservice:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8084
