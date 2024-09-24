@@ -19,13 +19,13 @@ Install minikube
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Daniel-Ugulino/daniel.ugulino.AT.DR3
 ```
 
 Go to the project directory
 
 ```bash
-  cd AT
+  cd daniel.ugulino.AT.DR3
 ```
 
 Go to the Infra directory
@@ -45,12 +45,17 @@ Run the kubertes file
   bash ./run.sh
 ```
 
+```Run the Kubctl Port Foward
+  kubectl port-forward deployment/tax-service 8084:8084
+  kubectl port-forward deployment/database-service 8083:8083
+```
+
 ## API Reference
 
-### Tax Service
+### Tax Service 
 
 ```http
-  POST /tax
+POST localhost:8084/tax
 ```
 | Body | Type     | 
 | :-------- | :------- | 
@@ -59,7 +64,7 @@ Run the kubertes file
 ### IRRF Service
 
 ```http
-  POST /irrf
+POST localhost:8082/irrf
 ```
 | Body | Type     | 
 | :-------- | :------- | 
@@ -69,11 +74,11 @@ Run the kubertes file
 ### DB Service
 
 ```http
-  GET /db
+GET localhost:8083/db
 ```
 
 ```http
-  CREATE /db
+CREATE localhost:8083/db
 ```
 
 | Body | Type     | 
@@ -82,7 +87,7 @@ Run the kubertes file
 
 
 ```http
-  GET /db/${id}
+GET localhost:8083/db/${id}
 ```
 
 | Parameter | Type     | 
@@ -91,7 +96,7 @@ Run the kubertes file
 
 
 ```http
-  DELETE /db/${id}
+DELETE localhost:8083/db/${id}
 ```
 
 | Parameter | Type     | 
